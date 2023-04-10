@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'devicesdb.apps.DevicesdbConfig',
+    'cataloguedb.apps.cataloguedbConfig',
     'instancesdb.apps.InstancesdbConfig',
     'locationsdb.apps.LocationsdbConfig',
     'systemsdb.apps.SystemsdbConfig',
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'polymorphic',
+    'django_bootstrap5',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'DEDB.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
