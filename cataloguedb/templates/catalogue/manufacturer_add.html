@@ -1,0 +1,59 @@
+{% extends "base_cat.html" %}
+{% block app_name_info %}
+    <a class="nav-link active" href="#">
+        <span data-feather="home"></span>
+        Add manufacturer
+    </a>
+{% endblock app_name_info %}
+{% block content %}
+    <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="manufacturerInput1">Manufacturer name:</label>
+                <input type="text"
+                       id="manufacturerInput1"
+                       name="name"
+                       class="form-control"
+                       placeholder="Entre the manufacturer name (company, institution,...)"
+                       required/>
+                <div class="invalid-feedback">Please provide a manufacturer name.</div>
+            </div >
+            <div class="mb-3">
+                <label for="manufacturerInput1">Manufacturer website:</label>
+                <input type="text"
+                       name="website"
+                       class="form-control"
+                       placeholder="Entre the manufacturer website url"/>
+            </div >
+            <div class="mb-3">
+                <label for="manufacturerStatus1">Status:</label>
+                <select class="form-select" id="manufacturerStatus1" name="status">
+                    <option value="AC">
+                        Active
+                    </option>
+                    <option value="AQ">
+                        Acquired
+                    </option>
+                    <option value="LQ">
+                        Liquidation
+                    </option>
+                    <option value="UN">
+                        Unknow
+                    </option>
+                </select>
+            </div >
+            <div class="mb-3">
+                <button type="submit"
+                        class="btn btn-primary mb-3"
+                        hx-post="{% url 'catalogue:add-manufacturer' %}"
+                        hx-target="#add-result"
+                        hx-sawp="outerHTML">
+                    Add Manufacturer
+                </button>
+            </div >
+            <div id="add-result"> 
+            </div>
+        </form>
+    </div>
+{% endblock content %}

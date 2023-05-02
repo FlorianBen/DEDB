@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if lastupdate %}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mollis est felis. Integer odio urna, volutpat porta bibendum sed, viverra eu neque. Vestibulum arcu dui, consectetur vel lorem quis, porta interdum turpis. Vestibulum sodales feugiat mattis. Integer lectus metus, auctor id sollicitudin ac, tempus eu diam. Nam malesuada risus sit amet massa varius egestas. Vestibulum volutpat pellentesque viverra. Nulla et dui in nisl faucibus tristique vel in lorem. Suspendisse mollis imperdiet lorem, vel porttitor turpis.
+        Mauris tempor a lacus rhoncus posuere. Nunc gravida faucibus urna a elementum. Praesent in mauris sed turpis congue pharetra eu sed quam. Sed dapibus ac odio sed pharetra. Vestibulum at condimentum elit, et fermentum purus. Quisque eu vestibulum ipsum. Nulla sed eros nibh. Vivamus et ornare nulla, sed sagittis turpis. Vestibulum elementum cursus rhoncus. Sed placerat nisi odio, id eleifend nisi fringilla eget. Maecenas gravida interdum urna, sit amet scelerisque dui. Integer aliquet sit amet arcu ac posuere.
+        Etiam ornare elit eget arcu auctor, eget blandit nisi rutrum. Vestibulum a bibendum ex. Morbi nunc mauris, placerat sed lectus sit amet, varius fringilla metus. Aliquam sollicitudin ipsum fermentum purus tincidunt consectetur id id lacus. Praesent consequat eu felis ut lacinia. Phasellus ut ligula ligula. Cras lobortis mauris in magna volutpat ultricies. Maecenas ornare lobortis lorem eget rhoncus. Aliquam erat volutpat. Etiam tempus nulla sit amet suscipit efficitur. Nullam iaculis tellus metus, ut placerat orci luctus at. Fusce in mi nisl. Cras et viverra nisi. Morbi non magna massa. Vestibulum faucibus semper mollis. Ut porttitor ante non lectus malesuada porttitor.
+        Fusce quis egestas lectus. Proin cursus ornare purus et tempor. Sed a dui ac risus facilisis hendrerit. Sed tincidunt blandit orci vitae euismod. Fusce ac elementum sapien. Nulla mi nisi, finibus vel luctus iaculis, venenatis id erat. Vivamus luctus libero sem, malesuada semper nisl pellentesque id.
+        In at augue aliquam, pretium turpis nec, tempor tellus. Morbi vitae erat massa. Integer gravida nibh enim, sed iaculis metus porta non. Quisque enim ex, porttitor ut vehicula sed, consequat ut est. Quisque at urna sem. Vivamus vitae vehicula nulla. Vestibulum ac mi in ipsum luctus laoreet. Donec at nunc ac justo vehicula semper. Proin sollicitudin diam et tempor rhoncus. Aliquam ullamcorper felis vitae mauris pharetra mattis.
+        <ul>
+            {% for instance in lastupdate %}
+                <li>
+                    <a href="{% url 'instances:instances' instance.id %}">{{ instance }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No instance are available.</p>
+    {% endif %}
+{% endblock %}

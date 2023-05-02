@@ -108,4 +108,4 @@ class Room(Zone):
     room_number = models.IntegerField('Level')
 
     def __str__(self) -> str:
-        return self.zone_ref.__str__() + '>' + self.name_text
+        return self.area_ref.__str__() + '>' + self.name_text

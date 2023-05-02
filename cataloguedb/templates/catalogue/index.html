@@ -1,0 +1,22 @@
+{% extends "base_cat.html" %}
+{% block app_name_info %}
+    <a class="nav-link active" href="#">
+        <span data-feather="home"></span>
+        List references
+    </a>
+{% endblock app_name_info %}
+{% block content %}
+    {% if lastupdate %}
+        {% for instance in lastupdate %}
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <a href="{% url 'catalogue:detail' instance.id %}">{{ instance }}</a>
+                    </div >
+                </div >
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No instance are available.</p>
+    {% endif %}
+{% endblock %}

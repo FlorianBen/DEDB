@@ -1,0 +1,84 @@
+{% extends "base_cat.html" %}
+{% load widget_tweaks %}
+{% block app_name_info %}
+    <a class="nav-link active" href="#">
+        <span data-feather="home"></span>
+        Add Reference
+    </a>
+{% endblock app_name_info %}
+{% block content %}
+    <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                {% render_field form.name_text.label_tag %}
+                {% render_field form.name_text class="form-control my-2" %}
+            </div >
+            <div class="mb-3">
+                {{ form.manufacturer.label_tag }}
+                <input type="text"
+                       id="manufacturerInput1"
+                       name="name"
+                       class="form-control my-2"
+                       placeholder="Filter"/>
+                {% render_field form.manufacturer class="form-select" %}
+            </div >
+            <div class="mb-3">
+                {{ form.ref_manufacturer_text.label_tag }}
+                {% render_field form.ref_manufacturer_text type="text" class="form-control" %}
+            </div >
+            <div class="mb-3">
+                <label for="manufacturerStatus1">Status:</label>
+                <select class="form-select my-2" id="manufacturerStatus1" name="status">
+                    <option value="AC">
+                        Active
+                    </option>
+                    <option value="NN">
+                        Not recommanded for new desing
+                    </option>
+                    <option value="OB">
+                        Obsolete
+                    </option>
+                    <option value="UN">
+                        Unknown
+                    </option>
+                </select>
+            </div >
+            <div class="mb-3">
+                <label for="manufacturerStatus2">Status:</label>
+                <select class="form-select my-2" id="manufacturerStatus1" name="status">
+                    <option value="AC">
+                        Active
+                    </option>
+                    <option value="NN">
+                        Not recommanded for new desing
+                    </option>
+                    <option value="OB">
+                        Obsolete
+                    </option>
+                    <option value="UN">
+                        Unknown
+                    </option>
+                </select>
+            </div >
+            <div class="mb-3">
+                <label for="manufacturerInput1">Item URL:</label>
+                <input type="text"
+                       name="website"
+                       class="form-control"
+                       placeholder="Entre the manufacturer website url"/>
+            </div >
+            <div class="mb-3">
+                <button type="submit"
+                        class="btn btn-primary mb-3"
+                        hx-post="{% url 'catalogue:add-reference' %}"
+                        hx-target="#add-result"
+                        hx-sawp="outerHTML">
+                    Add Reference
+                </button>
+            </div >
+            <div id="add-result"> 
+            </div>
+        </form>
+    </div>
+{% endblock content %}

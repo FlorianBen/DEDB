@@ -15,7 +15,8 @@ class SpareInline(admin.StackedInline):
 
 class DeviceAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Device Identification', {'fields': ['system_ref', 'location', 'ref', 'index_instance', 'code_text']}),
+        ('Device Identification', {'fields': ['system_ref', 'location', 'ref', 'index_instance', 'code_text', 'sn_internal_text']}),
+        ('Catalogue information', {'fields': ['sn_manufacturer_text', 'order_text']}),
         ('Date information', {'fields': ['reception_date','install_date']}),
     ]
     inlines = [SpareInline]
