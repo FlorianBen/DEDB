@@ -13,23 +13,36 @@
             <div class="mb-3">
                 {% render_field form.name_text.label_tag %}
                 {% render_field form.name_text class="form-control my-2" %}
+                <div class="invalid-feedback">Please provide a reference name.</div>
+                {{ form.ref_manufacturer_text.label_tag }}
+                {% render_field form.ref_manufacturer_text type="text" class="form-control" %}
+                <div class="invalid-feedback">Please provide the reference from manufacturer.</div>
+                <div class="form-floating my-2">
+                    <textarea class="form-control"
+                              placeholder="Leave a short description here"
+                              id="floatingTextarea2"
+                              style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description</label>
+                </div>
             </div >
             <div class="mb-3">
                 {{ form.manufacturer.label_tag }}
                 <input type="text"
                        id="manufacturerInput1"
-                       name="name"
+                       name="filtermanufacturer"
                        class="form-control my-2"
-                       placeholder="Filter"/>
-                {% render_field form.manufacturer class="form-select" %}
+                       placeholder="Filter"
+                       hx-post="{% url 'catalogue:filter-manufacturer' %}"
+                       hx-trigger='keyup'
+                       hx-target="#manufacturer-results"/>
+                {% render_field form.manufacturer class="form-select id=manufacturer-results" %}
             </div >
             <div class="mb-3">
-                {{ form.ref_manufacturer_text.label_tag }}
-                {% render_field form.ref_manufacturer_text type="text" class="form-control" %}
+              
             </div >
             <div class="mb-3">
-                <label for="manufacturerStatus1">Status:</label>
-                <select class="form-select my-2" id="manufacturerStatus1" name="status">
+                <label for="referenceStatus">Status:</label>
+                <select class="form-select my-2" id="referenceStatus_1" name="status">
                     <option value="AC">
                         Active
                     </option>
@@ -45,40 +58,30 @@
                 </select>
             </div >
             <div class="mb-3">
-                <label for="manufacturerStatus2">Status:</label>
-                <select class="form-select my-2" id="manufacturerStatus1" name="status">
-                    <option value="AC">
-                        Active
+                <label for="referenceType_1">Status:</label>
+                <select class="form-select my-2" id="referenceType_1" name="type">
+                    <option value="CO">
+                        Commercial off-the-shelf
                     </option>
-                    <option value="NN">
-                        Not recommanded for new desing
+                    <option value="CU">
+                        Custom made
                     </option>
-                    <option value="OB">
-                        Obsolete
-                    </option>
-                    <option value="UN">
-                        Unknown
+                    <option value="OT">
+                        Other/Unknow
                     </option>
                 </select>
             </div >
             <div class="mb-3">
-                <label for="manufacturerInput1">Item URL:</label>
+                <label for="referenceInput2">Item URL:</label>
                 <input type="text"
                        name="website"
                        class="form-control"
                        placeholder="Entre the manufacturer website url"/>
             </div >
             <div class="mb-3">
-                <button type="submit"
-                        class="btn btn-primary mb-3"
-                        hx-post="{% url 'catalogue:add-reference' %}"
-                        hx-target="#add-result"
-                        hx-sawp="outerHTML">
-                    Add Reference
-                </button>
+                <button type="submit" class="btn btn-primary mb-3">Add Reference</button>
             </div >
-            <div id="add-result"> 
-            </div>
+            <div id="add-result"></div>
         </form>
     </div>
 {% endblock content %}

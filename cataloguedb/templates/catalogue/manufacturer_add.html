@@ -14,21 +14,28 @@
                 <input type="text"
                        id="manufacturerInput1"
                        name="name"
-                       class="form-control"
+                       class="form-control  my-2"
                        placeholder="Entre the manufacturer name (company, institution,...)"
                        required/>
                 <div class="invalid-feedback">Please provide a manufacturer name.</div>
+                <div class="form-floating  my-2">
+                    <textarea class="form-control"
+                              placeholder="Leave a short description here"
+                              id="floatingTextarea2"
+                              style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description</label>
+                </div>
             </div >
             <div class="mb-3">
                 <label for="manufacturerInput1">Manufacturer website:</label>
                 <input type="text"
                        name="website"
-                       class="form-control"
+                       class="form-control my-2"
                        placeholder="Entre the manufacturer website url"/>
             </div >
             <div class="mb-3">
                 <label for="manufacturerStatus1">Status:</label>
-                <select class="form-select" id="manufacturerStatus1" name="status">
+                <select class="form-select my-2" id="manufacturerStatus1" name="status">
                     <option value="AC">
                         Active
                     </option>
@@ -52,8 +59,7 @@
                     Add Manufacturer
                 </button>
             </div >
-            <div id="add-result"> 
-            </div>
+            <div id="add-result"></div>
         </form>
     </div>
 {% endblock content %}

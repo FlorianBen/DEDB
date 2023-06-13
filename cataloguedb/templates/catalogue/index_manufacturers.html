@@ -6,16 +6,45 @@
     </a>
 {% endblock app_name_info %}
 {% block content %}
-    {% if lastupdate %}
-        {% for instance in lastupdate %}
+    <div class="container-fluid">
+        <form id="search-form"
+              action=""
+              method="post"
+              enctype="multipart/form-data">
             <div class="row">
+                <div class="col-8">
+                    <input type="text" class="form-control" placeholder="Search name"/>
+                </div>
                 <div class="col">
-                    <div class="box">
-                        <a href="{% url 'catalogue:detail_manufacturer' instance.id %}">{{ instance }}</a>
-                    </div >
-                </div >
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
             </div>
-        {% endfor %}
+            
+        </form>
+    </div>
+
+    {% if lastupdate %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for instance in lastupdate %}
+                <div class="col">
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-2">
+                                <img src="..." class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ instance }}</h5>
+                                    <p class="card-text">{{ instance.status }}</p>
+                                    <a href="{% url 'catalogue:detail_manufacturer' instance.id %}"
+                                       class="card-link">More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
         <p>No instance are available.</p>
     {% endif %}
