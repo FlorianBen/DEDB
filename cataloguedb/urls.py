@@ -16,7 +16,7 @@ urlpatterns = [
 hmtx_views = [
     path("add-manufacturer/", views.add_manufacturer, name='add-manufacturer'),
     path("add-reference/", views.add_reference, name='add-reference'),
-
+    path("filter-manufacturer/", views.filter_manufacturer, name='filter-manufacturer'),
 ]
 
 urlpatterns += hmtx_views

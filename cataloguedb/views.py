@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import Http404, HttpResponse
 from django.db.utils import IntegrityError
 
+import logging
+
 from .models import Reference, Manufacturer
-from .forms import ManufacturerForm, ReferenceForm
+from .forms import ReferenceForm
 # Create your views here.
 
 
@@ -69,9 +71,12 @@ def add_reference(request):
     manu = Reference.objects.create(
         name_text=name, status=status)
 
-    return HttpResponse('<div class="alert alert-success" role="alert" id="add-result">The Manufacturer has been added to the database</div>')
+    return HttpResponse('<div class="alert alert-success" role="alert" id="add-result">The Reference has been added to the database</div>')
 
-
+def filter_manufacturer(request):
+    temp = request.POST.get('filtermanufacturer')
+    logging.debug(temp)
+    return  HttpResponse('test')
 
 def update_status(request):
 
